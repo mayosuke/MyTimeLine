@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="24sp"
+            android:singleLine="true"
             />
         <EditText
             android:id="@+id/endTime"
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="24sp"
+            android:singleLine="true"
             />
         <EditText
             android:id="@+id/what"
@@ -79,6 +81,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="24sp"
+            android:singleLine="true"
             />
         <EditText
             android:id="@+id/where"
@@ -86,6 +89,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="24sp"
+            android:singleLine="true"
             />
         <EditText
             android:id="@+id/notes"
@@ -93,6 +97,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="24sp"
+            android:singleLine="true"
             />
     </LinearLayout>
 </LinearLayout>
