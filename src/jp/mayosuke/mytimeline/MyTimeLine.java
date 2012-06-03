@@ -3,120 +3,61 @@ package jp.mayosuke.mytimeline;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-/**
- * Defines a contract between the Note Pad content provider and its clients. A contract defines the
- * information that a client needs to access the provider as one or more data tables. A contract
- * is a public, non-extendable (final) class that contains constants defining column names and
- * URIs. A well-written client depends only on the constants in the contract.
- */
 public final class MyTimeLine {
+
     public static final String AUTHORITY = "jp.mayosuke.provider.MyTimeLine";
 
-    // This class cannot be instantiated
-    private MyTimeLine() {
-    }
+    /**
+     * The table name offered by this provider
+     */
+    public static final String TABLE_NAME = "timelines";
+
+    // URI definitions
 
     /**
-     * TimeLine table contract
+     * The scheme part for this provider's URI
      */
-    public static final class TimeLines implements BaseColumns {
+    private static final String SCHEME = "content://";
 
-        // This class cannot be instantiated
-        private TimeLines() {}
+    /**
+     * Path part for the timelines URI
+     */
+    private static final String PATH_TIMELINES = "/timelines/";
 
-        /**
-         * The table name offered by this provider
-         */
-        public static final String TABLE_NAME = "timelines";
+    /**
+     * The content:// style URL for this table
+     */
+    public static final Uri CONTENT_URI = Uri.parse(SCHEME + AUTHORITY + PATH_TIMELINES);
 
-        /*
-         * URI definitions
-         */
+    // MIME type definitions
 
-        /**
-         * The scheme part for this provider's URI
-         */
-        private static final String SCHEME = "content://";
+    /**
+     * The MIME type of {@link #CONTENT_URI} providing a directory of timelines.
+     */
+    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.mayosuke.timeline";
 
-        /**
-         * Path parts for the URIs
-         */
+    /**
+     * The MIME type of a {@link #CONTENT_URI} sub-directory of a single
+     * note.
+     */
+    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.mayosuke.timeline";
 
-        /**
-         * Path part for the Notes URI
-         */
-        private static final String PATH_TIMELINES = "/timelines";
+    /**
+     * The default sort order for this table
+     */
+    public static final String DEFAULT_SORT_ORDER = "modified DESC";
 
-        /**
-         * Path part for the Note ID URI
-         */
-        private static final String PATH_TIMELINE_ID = "/timelines/";
+    // Column definitions
 
-        /**
-         * 0-relative position of a timeline ID segment in the path part of a timeline ID URI
-         */
-        public static final int TIMELINE_ID_PATH_POSITION = 1;
-
-        /**
-         * Path part for the Live Folder URI
-         */
-        private static final String PATH_LIVE_FOLDER = "/live_folders/timelines";
-
-        /**
-         * The content:// style URL for this table
-         */
-        public static final Uri CONTENT_URI =  Uri.parse(SCHEME + AUTHORITY + PATH_TIMELINES);
-
-        /**
-         * The content URI base for a single timeline. Callers must
-         * append a numeric note id to this Uri to retrieve a timeline
-         */
-        public static final Uri CONTENT_ID_URI_BASE
-            = Uri.parse(SCHEME + AUTHORITY + PATH_TIMELINE_ID);
-
-        /**
-         * The content URI match pattern for a single timeline, specified by its ID. Use this to match
-         * incoming URIs or to construct an Intent.
-         */
-        public static final Uri CONTENT_ID_URI_PATTERN
-            = Uri.parse(SCHEME + AUTHORITY + PATH_TIMELINE_ID + "/#");
-
-        /**
-         * The content Uri pattern for a notes listing for live folders
-         */
-        public static final Uri LIVE_FOLDER_URI
-            = Uri.parse(SCHEME + AUTHORITY + PATH_LIVE_FOLDER);
-
-        /*
-         * MIME type definitions
-         */
-
-        /**
-         * The MIME type of {@link #CONTENT_URI} providing a directory of notes.
-         */
-        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.mayosuke.timeline";
-
-        /**
-         * The MIME type of a {@link #CONTENT_URI} sub-directory of a single
-         * note.
-         */
-        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.mayosuke.timeline";
-
-        /**
-         * The default sort order for this table
-         */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
-
-        /*
-         * Column definitions
-         */
-
-        public enum ColumnName {
-            START_TIME,
-            END_TIME,
-            WHAT,
-            WHERE,
-            NOTES;
-        }
+    public enum Column implements BaseColumns {
+        startTime,
+        endTime,
+        what,
+        where,
+        notes,
+        createdDate,
+        modifiedDate;
     }
+
+    private MyTimeLine() {} // This class cannot be instantiated
 }
