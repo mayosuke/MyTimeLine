@@ -36,14 +36,14 @@
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow" >
         </activity>
-
+<!--
         <provider
             android:name="MyTimeLineProvider"
             android:authorities="jp.mayosuke.provider.MyTimeLine"
             android:exported="false" >
             <grant-uri-permission android:pathPattern=".*" />
         </provider>
-
+-->
     </application>
 
 </manifest>
