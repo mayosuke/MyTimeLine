@@ -1,30 +1,21 @@
 package jp.mayosuke.mytimeline;
 
 import android.app.Activity;
+import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
-public class MyTimeLineActivity extends Activity {
-
-    private EditText mStartTime;
-    private EditText mEndTime;
-    private EditText mWhat;
-    private EditText mWhere;
-    private EditText mNotes;
+public class MyTimeLineListActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
-        mStartTime = (EditText) findViewById(R.id.startTime);
-        mEndTime = (EditText) findViewById(R.id.endTime);
-        mWhat = (EditText) findViewById(R.id.what);
-        mWhere = (EditText) findViewById(R.id.where);
-        mNotes = (EditText) findViewById(R.id.notes);
+        
+        final ListFragment listFragment = new ListFragment();
+        
+        getFragmentManager().beginTransaction().add(android.R.id.content, listFragment).commit();
     }
 
     @Override
