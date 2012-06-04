@@ -2,7 +2,6 @@ package jp.mayosuke.mytimeline;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +19,7 @@ public class MyTimeLineListActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.list, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -28,8 +27,7 @@ public class MyTimeLineListActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.action_finish:
-            Intent intent = new Intent(this, MyTimeLineListActivity.class);
-            startActivity(intent);
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
