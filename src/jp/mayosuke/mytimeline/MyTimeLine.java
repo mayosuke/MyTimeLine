@@ -1,28 +1,52 @@
 package jp.mayosuke.mytimeline;
 
-import android.net.Uri;
-import android.provider.BaseColumns;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyTimeLine {
 
-    public final long mStartTime;
-    public final long mEndTime;
-    public final String mWhat;
-    public final String mWhere;
-    public final String mNotes;
-    public final long mCreatedDate;
-    public final long mModifiedDate;
-
-    public MyTimeLine(long startTime, long endTime,
-            String what, String where, String notes) {
-        mStartTime = startTime;
-        mEndTime = endTime;
-        mWhat = what;
-        mWhere = where;
-        mNotes = notes;
-        mCreatedDate = System.currentTimeMillis();
-        mModifiedDate = mCreatedDate;
+    private final static MyTimeLine sInstance = new MyTimeLine();
+    private MyTimeLine() {}
+    public static MyTimeLine getInstance() {
+        return sInstance;
     }
+
+    private final List<TimeLine> mTimeLines = new ArrayList<TimeLine>();
+
+    public void insertTimeLine(final TimeLine timeLine) {
+        mTimeLines.add(timeLine);
+    }
+
+    public List<TimeLine> getTimeLines() {
+        return mTimeLines;
+    }
+
+    public static class TimeLine {
+        public final long mStartTime;
+        public final long mEndTime;
+        public final String mWhat;
+        public final String mWhere;
+        public final String mNotes;
+        public final long mCreatedDate;
+        public final long mModifiedDate;
+
+        public TimeLine(long startTime, long endTime,
+                String what, String where, String notes) {
+            mStartTime = startTime;
+            mEndTime = endTime;
+            mWhat = what;
+            mWhere = where;
+            mNotes = notes;
+            mCreatedDate = System.currentTimeMillis();
+            mModifiedDate = mCreatedDate;
+        }
+
+        public String toString() {
+            return "mStartTime=" + mStartTime + ",mEndTime=" + mEndTime + ",mWhat=" + mWhat + ",mWhere=" + mWhere + ",mNotes=" + mNotes + ",mCreatedDate=" + mCreatedDate + ",mModifiedDate=" + mModifiedDate;
+        }
+    }
+
+
 
 //    public static final String AUTHORITY = "jp.mayosuke.provider.MyTimeLine";
 //

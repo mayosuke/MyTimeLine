@@ -1,10 +1,13 @@
 package jp.mayosuke.mytimeline;
 
+import jp.mayosuke.mytimeline.MyTimeLine.TimeLine;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 
 public class MyTimeLineListActivity extends Activity {
 
@@ -13,6 +16,8 @@ public class MyTimeLineListActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         final ListFragment listFragment = new ListFragment();
+        final ListAdapter adapter = new ArrayAdapter<TimeLine>(this, android.R.layout.simple_list_item_1, MyTimeLine.getInstance().getTimeLines());
+        listFragment.setListAdapter(adapter);
         
         getFragmentManager().beginTransaction().add(android.R.id.content, listFragment).commit();
     }
