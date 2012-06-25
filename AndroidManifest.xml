@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="14"
+        android:targetSdkVersion="15"
         />
 
     <application
@@ -36,6 +36,13 @@
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow" >
         </activity>
+
+        <activity
+            android:name=".DailyViewActivity"
+            android:label="2012年6月25日(月)"
+            android:uiOptions="splitActionBarWhenNarrow" >
+        </activity>
+        
 <!--
         <provider
             android:name="MyTimeLineProvider"

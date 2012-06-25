@@ -40,13 +40,20 @@ public class MyTimeLineActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.action_finish:
+        case R.id.action_finish: {
             saveTimeLine(mViewHolder);
 
             Intent intent = new Intent(this, MyTimeLineListActivity.class);
             startActivity(intent);
 
             return true;
+        }
+        case R.id.action_daily_view: {
+            Intent intent = new Intent(this, DailyViewActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
         }
         return super.onOptionsItemSelected(item);
     }

@@ -3,4 +3,7 @@
     <item android:id="@+id/action_finish"
           android:title="完了"
           android:showAsAction="ifRoom" />
+    <item android:id="@+id/action_daily_view"
+          android:title="Daily View"
+          android:showAsAction="never" />
 </menu>
