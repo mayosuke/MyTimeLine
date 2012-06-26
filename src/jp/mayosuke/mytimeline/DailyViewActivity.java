@@ -5,7 +5,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -21,6 +24,25 @@ public class DailyViewActivity extends Activity {
         getFragmentManager().beginTransaction().add(android.R.id.content, fragment).commit();
         
         getActionBar().setTitle("2012年6月25日(月）");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.daily_view, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.action_previous_day: {
+            return true;
+        }
+        case R.id.action_next_day: {
+            return true;
+        }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private long mCurrentId = 0L;
