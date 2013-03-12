@@ -1,9 +1,9 @@
 package jp.mayosuke.mytimeline;
 
-import java.util.List;
-
 import jp.mayosuke.mytimeline.MyTimeLine.TimeLine;
+
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,17 +15,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MyTimeLineListActivity extends Activity {
+    private static final String LIST_FRAGMENT_TAG = "listFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ListFragment listFragment = new ListFragment();
+        ListFragment listFragment = (ListFragment) getFragmentManager().findFragmentByTag(LIST_FRAGMENT_TAG);
+        if (listFragment == null) {
+            listFragment = new ListFragment();
+        }
         listFragment.setListAdapter(new MyListAdapter(this, R.layout.list_item, MyTimeLine.getInstance().getTimeLines()));
         getFragmentManager().
                 beginTransaction().
-                add(android.R.id.content, listFragment).
+                add(android.R.id.content, listFragment, LIST_FRAGMENT_TAG).
                 commit();
     }
 
