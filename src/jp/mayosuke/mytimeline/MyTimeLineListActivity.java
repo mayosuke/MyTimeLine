@@ -45,7 +45,7 @@ public class MyTimeLineListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class MyListAdapter extends ArrayAdapter<TimeLine> {
+    private static class MyListAdapter extends ArrayAdapter<TimeLine> {
 
         private MyListAdapter(Context context, int textViewResourceId, List<TimeLine> objects) {
             super(context, textViewResourceId, objects);
@@ -55,7 +55,7 @@ public class MyTimeLineListActivity extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             final View view;
             if (convertView == null) {
-                view = getLayoutInflater().inflate(R.layout.list_item, null);
+                view = View.inflate(getContext(), R.layout.list_item, null);
             } else {
                 view = convertView;
             }
